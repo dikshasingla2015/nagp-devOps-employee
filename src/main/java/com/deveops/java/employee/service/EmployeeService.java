@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.deveops.java.employee.dto.EmployeeBEObjectBaseResponse;
+import com.deveops.java.employee.dto.EmployeeDTO;
 import com.deveops.java.employee.model.Employee;
 import com.deveops.java.employee.repository.EmployeeRepository;
 
@@ -23,15 +24,14 @@ public class EmployeeService {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
-	public EmployeeBEObjectBaseResponse addEmployee(Employee employee) {
+	public EmployeeBEObjectBaseResponse addEmployee(EmployeeDTO employeeDTO) {
 		try {
+			Employee employee = new Employee(employeeDTO);
 			employeeRepository.save(employee);
-			logger.info("Employee Data Saved For GMA-Booking successfully.");
+			logger.info("Employee Data Savedsuccessfully.");
 			return getSuccessResponse("Employee Added Successfully");
 		} catch (Exception e) {
-			logger.error(
-					"Exception Occured While Saving Employee Details. Exception Message {{}},Exception Details {{}}",
-					e.getMessage(), e);
+			logger.error("Exception Occured While Saving Employee Details. Exception Message {{}}", e.getMessage());
 			return getErrorResponse("Error Occurred while saving details");
 		}
 	}

@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.deveops.java.employee.dto.EmployeeBEObjectBaseResponse;
-import com.deveops.java.employee.model.Employee;
+import com.deveops.java.employee.dto.EmployeeDTO;
 import com.deveops.java.employee.service.EmployeeService;
 
 @RestController
 @RequestMapping(value = "/")
 public class EmployeeController {
-	
+
 	@Autowired
 	private EmployeeService employeeService;
 
@@ -24,8 +24,8 @@ public class EmployeeController {
 	}
 
 	@PostMapping("addEmployee")
-	public EmployeeBEObjectBaseResponse addEmployee(@RequestBody Employee product) {
-		return employeeService.addEmployee(product);
+	public EmployeeBEObjectBaseResponse addEmployee(@RequestBody EmployeeDTO employee) {
+		return employeeService.addEmployee(employee);
 	}
 
 	@GetMapping("getAllEmployees")
