@@ -17,7 +17,7 @@ spec:
         spec:
             containers:
                 - name: employee-app
-                  image: dikshasingla/employee:1
+                  image: dikshasingla/employee:2
                   ports:
                     - name: http
                       containerPort: 3515
